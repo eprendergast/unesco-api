@@ -1,24 +1,26 @@
-# README
+# Welcome to UNESCO API #
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+UNESCO API is an open, RESTful API providing access to the UNESCO World Heritage Site data. Thank you to UNESCO for providing the XML file on which this API was built - http://whc.unesco.org/en/syndication 
 
-Things you may want to cover:
+## Endpoints ##
 
-* Ruby version
+``` GET http://localhost:3000/sites ```
 
-* System dependencies
+Returns data for all 1029 UNESCO World Heritage sites.
 
-* Configuration
 
-* Database creation
+``` GET http://localhost:3000/sites/:id ```
 
-* Database initialization
+Passing in a site's id_number as a parameter, returns data for that specific UNESCO site
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+``` GET http://localhost:3000/sites/search?```
 
-* Deployment instructions
+The following parameters may be passed in as part of the query string:
 
-* ...
+| Parameter  | Options |
+| ------------- | ------------- |
+| Category  | ...  |
+| Region  | ...  |
+| State  | ...  |
+| ISO_Code  | ...  |
