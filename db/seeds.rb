@@ -6,7 +6,7 @@ XmlHasher.configure do |config|
     config.string_keys = false
 end
 
-XML_file = File.new('/Users/elizabethprendergast/Development/projects/unesco/unesco-backend/db/test.xml')
+XML_file = File.new('/Users/elizabethprendergast/Development/projects/unesco-api/db/test.xml')
 
 parsed = XmlHasher.parse(XML_file)
 
@@ -73,4 +73,4 @@ data = {
     }
 }
 
-puts data[:query][:row].first
+puts data[:query][:row].second
