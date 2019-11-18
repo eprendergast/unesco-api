@@ -32,6 +32,13 @@ def get_states(parsed_unesco_data)
     parsed_unesco_data[:query][:row].map{ |site| site[:states] ? site[:states].split(",") : "NIL" }.flatten.uniq.sort
 end
 
+def get_danger_categories(parsed_unesco_data)
+    parsed_unesco_data[:query][:row].map{ |site| site[:danger] }.uniq 
+end
+
+def get_justifications(parsed_unesco_data)
+    parsed_unesco_data[:query][:row].map{ |site| site[:justification] ? site[:justification] : "NIL" }.uniq 
+end
 
 xml_file = get_xml_file(UNESCO_XML_FILE_PATH)
 parsed_unesco_data = parse_xml_file(xml_file)
@@ -40,6 +47,9 @@ categories = get_categories(parsed_unesco_data) # Natural, Mixed, Cultural
 iso_codes = get_iso_codes(parsed_unesco_data) # 167 iso_codes
 regions = get_regions(parsed_unesco_data) # ["Europe and North America", "Latin America and the Caribbean", "Africa", "Asia and the Pacific", "Arab States"]
 states = get_states(parsed_unesco_data) # 177 states
+
+danger_categories = get_danger_categories(parsed_unesco_data) # [nil, "Y 1992", "Y 2003", "Y 2002", "P 2002-2006", "0", "P 2003-2009", "1", "Y 2014", "P 1999-2001", "P 1992-2003", "P 1992-2004", "Y 1997", "P 1992-1997", "P 1991-1998", "Y 1994", "Y 1996 P 1984-1992", "Y 1999", "P 2007-2010", "P 1992-2005", "Y 2001", "Y 1996", "Y 2010", "Y 2009", "P 2004-2006", "Y 2011 P 1996-2007", "Y 1992-2011", "P 1999-2006", "Y 2007", "Y 1982", "Y 2012 P 1990-2005", "Y 2012", "P 1979-2003", "P 2003-2007", "P 1988-2004", "P 2000-2012", "Y 1986", "P 2001-2012", "P 2000-2006 P 1984-1988", "Y 2006", "Y 2013", "P 1996-2006", "P 1999-2004", "P 2004-2014", "P 1984-1989", "P 1995-2003", "Y 2010 P 1993-2007", "Y 2005", "Y 2000"]
+justification = get_justifications(parsed_unesco_data)
 
 byebug
 

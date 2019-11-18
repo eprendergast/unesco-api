@@ -1,0 +1,2 @@
+class IsoCodesController < ApplicationController
+end
