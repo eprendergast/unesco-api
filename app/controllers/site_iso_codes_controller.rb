@@ -1,0 +1,2 @@
+class SiteIsoCodesController < ApplicationController
+end
