@@ -20,7 +20,7 @@ The following parameters may be passed in as part of the query string:
 
 | Parameter  | Options |
 | ------------- | ------------- |
-| Category  | ...  |
+| Category  | Natural, Mixed, Cultural  |
 | Region  | ...  |
 | State  | ...  |
 | ISO_Code  | ...  |
