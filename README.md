@@ -14,13 +14,24 @@ Returns data for all 1029 UNESCO World Heritage sites.
 Passing in a site's id_number as a parameter, returns data for that specific UNESCO site
 
 
-``` GET http://localhost:3000/sites/search?```
+``` GET http://localhost:3000/sites/search/:query```
 
 The following parameters may be passed in as part of the query string:
 
 | Parameter  | Options |
 | ------------- | ------------- |
-| Category  | Natural, Mixed, Cultural  |
-| Region  | ...  |
-| State  | ...  |
+| category  | Natural, Mixed, Cultural  |
+| region  | Europe and North America, Latin America and the Caribbean, Africa, Asia and the Pacific, Arab States |
+| state  | ...  |
 | ISO_Code  | ...  |
+
+Example usage:
+
+``` GET http://localhost:3000/sites/search/category=Natural```
+
+``` GET http://localhost:3000/sites/search/region=Asia+and+the+Pacific```
+
+``` GET http://localhost:3000/sites/search/state=Argentina```
+
+``` GET http://localhost:3000/sites/search/iso_code=ca```
+
