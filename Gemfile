@@ -46,3 +46,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # XML Parsing Gem
 gem 'xmlhasher'
+
+# Fast JSON API
+gem 'fast_jsonapi'
