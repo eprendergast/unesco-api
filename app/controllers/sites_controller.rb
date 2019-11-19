@@ -22,16 +22,16 @@ class SitesController < ApplicationController
         case search_type
         when "category"
             category = Category.find_by(name: search_term)
-            return sites = Site.where(category_id: category.id)
+            return Site.where(category_id: category.id)
         when "region"
             region = Region.find_by(name: search_term)
-            return sites = Site.where(region_id: region.id)
+            return Site.where(region_id: region.id)
         when "state"
             state = State.find_by(name: search_term)
-            return sites = Site.all.select{ |site| site.states.map{|s| s.name}.include?(state.name)}
+            return Site.all.select{ |site| site.states.map{|s| s.name}.include?(state.name)}
         when "iso_code"
-            iso_code = IsoCode.find_by(alpha_2_code: search_term.downcase
-            return sites = Site.all.select{ |site| site.iso_codes.map{ |code| code.alpha_2_code }.include?(iso_code.alpha_2_code)}
+            iso_code = IsoCode.find_by(alpha_2_code: search_term.downcase)
+            return Site.all.select{ |site| site.iso_codes.map{ |code| code.alpha_2_code }.include?(iso_code.alpha_2_code)}
         else 
             return "Error: search type is invalid"
         end
