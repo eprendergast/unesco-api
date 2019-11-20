@@ -36,17 +36,23 @@ module SeedsHelpers
     end
     
     def format_justifications(justification)
+
+        justification_to_return = ""
+
         if justification.nil? 
-            return false
-        else
-            if justification[:p]
-                justification[:p]
-            elsif justification
-                justification
-            else
-                nil 
-            end
+            justification_to_return = "N/A"
+        elsif justification[:p]
+            justification_to_return = justification[:p]
+        else 
+            justification_to_return = justification
         end
+
+        if justification_to_return.class == Array
+            justification_to_return = justification_to_return.join(" ")
+        end
+
+        return justification_to_return.strip
+
     end
 
 end
