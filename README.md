@@ -1,6 +1,8 @@
-# Welcome to UNESCO API #
+# Welcome to UNESCO API (BUILD IN PROGRESS) #
 
-UNESCO API is an open, RESTful API providing access to the UNESCO World Heritage Site data. Thank you to UNESCO for providing the XML file on which this API was built - http://whc.unesco.org/en/syndication 
+UNESCO API is an open, RESTful API providing access to the UNESCO World Heritage Site data. Thank you to UNESCO for providing the XML file on which this API was built - http://whc.unesco.org/en/syndication .
+
+I built this API as part of my Flatiron School Final Project, UNESGO - a web application which allows users to explore UNESCO World Heritage Sites from around the world. Repo visible here: https://github.com/eprendergast/UNESGO
 
 ## Endpoints ##
 
