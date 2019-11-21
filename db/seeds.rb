@@ -9,7 +9,7 @@ SiteIsoCode.delete_all
 SiteState.delete_all
 Site.delete_all
 
-UNESCO_XML_FILE_PATH = '/Users/elizabethprendergast/Development/projects/unesco-api/db/unesco.xml'
+UNESCO_XML_FILE_PATH = 'app/data/unesco.xml'
 
 xml_file = get_xml_file(UNESCO_XML_FILE_PATH)
 parsed_unesco_data = parse_xml_file(xml_file)
