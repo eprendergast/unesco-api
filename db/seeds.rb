@@ -1,5 +1,8 @@
 require_relative './seeds_helpers.rb'
+require_relative './scraper.rb'
+
 include SeedsHelpers
+include Scraper
 
 Category.delete_all
 Region.delete_all
@@ -35,39 +38,50 @@ iso_codes.each{ |code| IsoCode.create(alpha_2_code: code.strip)}
 puts "#{IsoCode.all.length} ISO Codes created"
 
 parsed_unesco_data[:query][:row].each do |site|
-    new_site = Site.create(
-        name: site[:site],
-        category_id: Category.find_by(name: site[:category]).id, 
-        region_id: Region.find_by(name: site[:region]).id, 
-        criteria_txt: site[:criteria_txt],
-        danger: site[:danger],
-        date_inscribed: site[:date_inscribed].to_i,
-        extension: site[:extension],
-        http_url: site[:http_url],
-        unesco_id_number: site[:id_number].to_i,
-        image_url: site[:image_url],
-        justification: format_justifications(site[:justification]), 
-        latitude: site[:latitude].to_f,
-        longitude: site[:longitude].to_f,
-        location: site[:location],
-        revision: site[:revision],
-        secondary_dates: site[:secondary_dates],
-        short_description: site[:short_description],
-        transboundary: (site[:transboundary] == "1" ? true : false), 
-        unique_number: site[:unique_number].to_i
-    )
+    new_site = Site.find_by(name: site[:site].strip)
+    
+    if !new_site
+        if site[:site].strip != "Ngorongoro Conservation Area"
+            puts "creating #{site[:site].strip}"
+            new_site = Site.create(
+                name: site[:site].strip,
+                category_id: Category.find_by(name: site[:category]).id, 
+                region_id: Region.find_by(name: site[:region]).id, 
+                criteria_txt: site[:criteria_txt],
+                danger: site[:danger],
+                date_inscribed: site[:date_inscribed].to_i,
+                extension: site[:extension],
+                http_url: site[:http_url],
+                unesco_id_number: site[:id_number].to_i,
+                image_url: get_site_image(site[:id_number].to_i),
+                justification: format_justifications(site[:justification]), 
+                latitude: site[:latitude].to_f,
+                longitude: site[:longitude].to_f,
+                location: site[:location],
+                revision: site[:revision],
+                secondary_dates: site[:secondary_dates],
+                short_description: format_short_description(site).chomp("{:span=>\" \"}").strip,
+                transboundary: (site[:transboundary] == "1" ? true : false), 
+                unique_number: site[:unique_number].to_i
+            )
+        
 
-    if site[:iso_code]
-        site[:iso_code].split(",").each do |code|
-            SiteIsoCode.create(site_id: new_site.id, iso_code_id: IsoCode.find_by(alpha_2_code: code.strip).id)
+
+            if site[:iso_code]
+                site[:iso_code].split(",").each do |code|
+                    SiteIsoCode.create(site_id: new_site.id, iso_code_id: IsoCode.find_by(alpha_2_code: code.strip).id)
+                end
+            end
+
+            if site[:states]
+                site[:states].split(",").each do |state|
+                    SiteState.create(site_id: new_site.id, state_id: State.find_by(name: state.strip).id)
+                end
+            end
         end
     end
 
-    if site[:states]
-        site[:states].split(",").each do |state|
-            SiteState.create(site_id: new_site.id, state_id: State.find_by(name: state.strip).id)
-        end
-    end
+    # puts "#{new_site.name} created"
 
 end
 

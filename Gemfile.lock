@@ -157,6 +157,7 @@ GEM
       rspec-support (~> 3.9.0)
     rspec-support (3.9.0)
     ruby_dep (1.5.0)
+    rubysl-open-uri (2.0.0)
     spring (2.1.0)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -191,11 +192,13 @@ DEPENDENCIES
   faker
   fast_jsonapi
   listen (>= 3.0.5, < 3.2)
+  nokogiri (~> 1.6, >= 1.6.8)
   pg (>= 0.18, < 2.0)
   puma (~> 4.1)
   rack-cors
   rails (~> 6.0.1)
   rspec-rails (~> 3.6)
+  rubysl-open-uri (~> 2.0)
   spring
   spring-watcher-listen (~> 2.0.0)
   tzinfo-data
