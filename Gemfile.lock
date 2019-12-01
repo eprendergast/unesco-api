@@ -157,7 +157,6 @@ GEM
       rspec-support (~> 3.9.0)
     rspec-support (3.9.0)
     ruby_dep (1.5.0)
-    rubysl-open-uri (2.0.0)
     spring (2.1.0)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -198,7 +197,6 @@ DEPENDENCIES
   rack-cors
   rails (~> 6.0.1)
   rspec-rails (~> 3.6)
-  rubysl-open-uri (~> 2.0)
   spring
   spring-watcher-listen (~> 2.0.0)
   tzinfo-data

@@ -1,7 +1,7 @@
 class SitesController < ApplicationController
 
     def index
-        sites = Site.all 
+        sites = Site.all.select{ |site| site.image_url != "https://images.unsplash.com/photo-1548686013-c85877abc345?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" }
         render json: SiteSerializer.new(sites).to_serialized_json
     end
 
@@ -22,13 +22,13 @@ class SitesController < ApplicationController
         case search_type
         when "category"
             category = Category.find_by(name: search_term)
-            return Site.where(category_id: category.id)
+            return Site.where(category_id: category.id).select{ |site| site.image_url != "https://images.unsplash.com/photo-1548686013-c85877abc345?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" }
         when "region"
             region = Region.find_by(name: search_term)
-            return Site.where(region_id: region.id)
+            return Site.where(region_id: region.id).select{ |site| site.image_url != "https://images.unsplash.com/photo-1548686013-c85877abc345?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" }
         when "state"
             state = State.find_by(name: search_term)
-            return Site.all.select{ |site| site.states.map{|s| s.name}.include?(state.name)}
+            return Site.all.select{ |site| site.states.map{|s| s.name}.include?(state.name)}.select{ |site| site.image_url != "https://images.unsplash.com/photo-1548686013-c85877abc345?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" }
         when "iso_code"
             iso_code = IsoCode.find_by(alpha_2_code: search_term.downcase)
             return Site.all.select{ |site| site.iso_codes.map{ |code| code.alpha_2_code }.include?(iso_code.alpha_2_code)}

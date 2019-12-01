@@ -12,7 +12,7 @@ module Scraper
         img_path = get_image_path(doc, unesco_id_number)
        
         if img_path == false
-            return "https://pmdvod.nationalgeographic.com/NG_Video/607/426/lgpost_1526064084127.jpg"
+            return "https://images.unsplash.com/photo-1548686013-c85877abc345?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
         end
 
         img_url = generate_img_url(img_path)
@@ -29,7 +29,7 @@ module Scraper
     def get_image_path(doc, unesco_id_number)
         if doc.css(".bordered.icaption.nomargin.nopadding").css(".lightbox").css("img").count > 0
             return doc.css(".bordered.icaption.nomargin.nopadding").css(".lightbox").css("img").first.attributes.first.second.value
-        elsif !doc.css(".bordered.icaption.nomargin.nopadding").css(".lightbox").css("img")
+        elsif !doc.css(".bordered.icaption.nomargin.nopadding").css(".lightbox")
             page_url = "#{BASE_GALLERY_URL}/#{unesco_id_number}/gallery"
             doc = Nokogiri::HTML(open(page_url))
             return doc.css("a.lightbox > img").first.attributes["data-src"].value
