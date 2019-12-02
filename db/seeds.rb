@@ -16,7 +16,8 @@ UNESCO_XML_FILE_PATH = 'app/data/unesco.xml'
 
 xml_file = get_xml_file(UNESCO_XML_FILE_PATH)
 parsed_unesco_data = parse_xml_file(xml_file)
- Generate Categories
+
+# Generate Categories
 categories = get_categories(parsed_unesco_data) # Natural, Mixed, Cultural
 categories.each{ |category| Category.create(name: category.strip)}
 puts "#{Category.all.length} categories created"
