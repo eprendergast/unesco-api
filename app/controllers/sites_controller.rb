@@ -18,6 +18,10 @@ class SitesController < ApplicationController
         render json: SiteSerializer.new(sites).to_serialized_json
     end
 
+    def test
+        render json: { hello: 'yay!' }
+    end
+
     private def get_site_search_results(search_type, search_term)
         case search_type
         when "category"

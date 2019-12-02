@@ -12,6 +12,6 @@ Rails.application.routes.draw do
 
   get '/iso_codes', to: 'iso_codes#index'
 
-
+  get '/test', to: 'sites#test'
 
 end
