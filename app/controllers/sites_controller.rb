@@ -1,8 +1,14 @@
 class SitesController < ApplicationController
 
     def index
-        sites = Site.all.select{ |site| site.image_url != "https://images.unsplash.com/photo-1548686013-c85877abc345?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" }
-        render json: SiteSerializer.new(sites).to_serialized_json
+        @cached_sites = @cached_sites || nil
+
+        if @cached_sites == nil
+            sites = Site.all.select{ |site| site.image_url != "https://images.unsplash.com/photo-1548686013-c85877abc345?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" }
+            @cached_sites = SiteSerializer.new(sites).to_serialized_json
+        end
+        
+        render json: @cached_sites
     end
 
     def show
