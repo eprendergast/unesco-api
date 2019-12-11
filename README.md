@@ -6,6 +6,7 @@ I built this API as part of my Flatiron School Final Project, UNESGO - a web app
 
 ## Endpoints ##
 
+
 ``` GET http://localhost:3000/sites ```
 
 Returns data for all 1029 UNESCO World Heritage sites.
@@ -14,6 +15,21 @@ Returns data for all 1029 UNESCO World Heritage sites.
 ``` GET http://localhost:3000/sites/:id ```
 
 Passing in a site's id_number as a parameter, returns data for that specific UNESCO site
+
+
+``` GET http://localhost:3000/states ```
+
+Returns all countries which have at least one UNESCO World Heritage Site.
+
+
+``` GET http://localhost:3000/regions ```
+
+Returns all UNESCO-specified regions.
+
+
+``` GET http://localhost:3000/iso_codes ```
+
+Returns all ISO Codes for countries which have at least one UNESCO World Heritage Site.
 
 
 ``` GET http://localhost:3000/sites/search/:query```
