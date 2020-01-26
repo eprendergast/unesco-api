@@ -11,32 +11,10 @@ class SitesController < ApplicationController
     end
     
     def search
-        # http://example.com/path/to/page?name=ferret&color=purple
-        byebug
         search_type = params[:query].split("=").first
-        search_term = params[:query].split("=").second.downcase
-
-        sites = get_site_search_results(search_type, search_term)
+        search_term = params[:query].split("=").second
+        sites = Site.get_site_search_results(search_type, search_term)
         render json: SiteSerializer.new(sites).to_serialized_json
-    end
-
-    private def get_site_search_results(search_type, search_term)
-        case search_type
-            when "category"
-                category = Category.find_by(name: search_term)
-                return Site.get_sites_by_category(category)
-            when "region"
-                region = Region.find_by(name: search_term)
-                return Site.get_sites_by_region(region)
-            when "state"
-                state = State.find_by(name: search_term)
-                return Site.get_sites_by_state(state)
-            when "iso_code"
-                iso_code = IsoCode.find_by(alpha_2_code: search_term.downcase)
-                return Site.get_sites_by_iso_code(iso_code)
-            else 
-                return "Error: search type is invalid"
-        end
     end
 
 end
