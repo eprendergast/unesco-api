@@ -1,2 +1,0 @@
-class SiteStatesController < ApplicationController
-end
