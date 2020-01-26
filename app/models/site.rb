@@ -32,23 +32,23 @@ class Site < ApplicationRecord
         end
     end
     
-    private def self.get_sites_by_category(category)
+    def self.get_sites_by_category(category)
         Site.where(category_id: category.id).select{ |site| site.image_url != "https://images.unsplash.com/photo-1548686013-c85877abc345?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" }
     end
 
-    private def self.get_sites_by_region(region)
+    def self.get_sites_by_region(region)
         Site.where(region_id: region.id).select{ |site| site.image_url != "https://images.unsplash.com/photo-1548686013-c85877abc345?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" }
     end
 
-    private def self.get_sites_by_state(state)
+    def self.get_sites_by_state(state)
         Site.all.select{ |site| site.states.map{|s| s.name}.include?(state.name)}.select{ |site| site.image_url != "https://images.unsplash.com/photo-1548686013-c85877abc345?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" }
     end
 
-    private def self.get_sites_by_iso_code(iso_code)
+    def self.get_sites_by_iso_code(iso_code)
         Site.all.select{ |site| site.iso_codes.map{ |code| code.alpha_2_code }.include?(iso_code.alpha_2_code)}
     end
 
-    private def self.check_for_null_results(array_of_sites)
+    def self.check_for_null_results(array_of_sites)
         (array_of_sites.length > 0) ? (array_of_sites) : ("Error: no results for given search term")
     end
 
