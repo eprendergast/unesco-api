@@ -59,26 +59,21 @@ module SeedsHelpers
         
         description_to_return = ""
    
-
         if !site[:short_description] 
             return "N/A"
         end
-
 
         if site[:short_description].class == String 
             return site[:short_description]
         end
 
-
         if site[:short_description].class == Array 
             return site[:short_description].join("\n")
         end
 
-
         if !site[:short_description][:p] 
             return site[:short_description]
         end
-
 
         if site[:short_description][:p].class == String 
             return site[:short_description][:p]
@@ -87,7 +82,6 @@ module SeedsHelpers
         if site[:short_description][:p].class == Array
             return site[:short_description][:p].join("\n")
         end
-
 
         if site[:short_description][:p][:span].class == String 
             return site[:short_description][:p][:span]

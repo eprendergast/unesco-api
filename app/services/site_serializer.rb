@@ -13,7 +13,6 @@ class SiteSerializer
                 :iso_codes => {:only => [:id, :alpha_2_code]}
             }, :except => [:category_id, :region_id, :created_at, :updated_at]
         }
-
        @site.to_json(options) 
     end
 
