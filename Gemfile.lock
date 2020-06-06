@@ -175,7 +175,7 @@ GEM
       thread_safe (~> 0.1)
     websocket-driver (0.7.1)
       websocket-extensions (>= 0.1.0)
-    websocket-extensions (0.1.4)
+    websocket-extensions (0.1.5)
     xmlhasher (1.0.5)
       escape_utils (~> 1.2)
       ox (~> 2.11.0)
