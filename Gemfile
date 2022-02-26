@@ -26,7 +26,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'rack-cors'
 
 # Nokogiri for scraping UNESCO website
-gem 'nokogiri', '~> 1.6', '>= 1.6.8'
+gem 'nokogiri', '~> 1.13'
 
 gem 'dalli'
 
